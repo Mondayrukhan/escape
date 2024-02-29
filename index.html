@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>water</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia:wght@100..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <p>Get me some water</p>
+    </header>
+    <main>
+        <div class="container" id=" A_container">
+            
+            <div class="overlay">
+                <a href="./index2.html" style="display: block; width: 100%; height: 100%; z-index: 10; "></a>
+            </div>
+            <div class="card1"></div>
+        </div>
+        <div class="container" id=" B_container">
+            <div class="overlay">
+                <a href="./index3.html" style="display: block; width: 100%; height: 100%; z-index: 10; "></a>
+            </div>
+            <div class="card2"></div>
+        </div>
+        <div class="container" id=" C_container">
+            <div class="overlay">
+                <a href="./index4.html" style="display: block; width: 100%; height: 100%; z-index: 10; "></a>
+            </div>
+            <div class="card3"></div>
+            
+    </main>
+
+    </div>
+    
+
+
+    <script>
+        function cardEffect(container, overlay){
+            var container = document.querySelector('.container')
+            var overlay = document.querySelector('.overlay')
+            container.addEventListener('mousemove',function(e){
+                var x = e.offsetX
+                var y = e.offsetY
+                var rotateX = -1/5 * x + 20
+                var rotateY = 4/30 * y - 20
+
+                overlay.style = `background-position: ${x/5 + y/5}%`
+
+                container.style = `transform: 
+                perspective(350px)
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)`
+            })
+            container.addEventListener('mouseout',function(){
+            // overlay.style = 'filter : opacity(0)'
+            container.style = `transform: 
+            perspective(350px)
+            rotateX(0deg)
+            rotateY(0deg)`
+        })
+        }
+
+        // var container1 = document.getElementById('A_container');
+        var container2 = document.getElementById('B_container2');
+        // var container3 = document.getElementById('C_container3');
+
+        // cardEffect(container1, '.overlay');
+        cardEffect(container2, '.overlay');
+        // cardEffect(container3, '.overlay');
+        
+
+        
+
+
+    </script>
+
+    
+    <style>
+        *{
+            cursor: url("./img/can-08.png"), auto;
+        }
+        body{
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(16, 1fr);
+            grid-template-rows: repeat(16, 1fr);
+            background-color:bisque;
+            height: 100%;
+            overflow: hidden;
+            background-image: url('./img/plantarrium.png'); 
+            background-size: 100%; 
+            background-position: center; 
+            
+            
+        }
+        header{
+            grid-column: 7 / 11;
+            grid-row: 3 / 4;
+            text-align: center;
+            font-family: "Kalnia", serif;
+            font-size: 1.3em;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 200px;
+            z-index: 10;
+            
+        }
+        main{
+            display: flex;
+            justify-content: space-between;
+            /* background-color: bisque; */
+            grid-column: 5 / 13;
+            grid-row: 5 /10;
+            z-index: 20;
+            
+        }
+        .container{
+            width: 220px; height: 310px; transition: all 0.1s;
+        }
+        .overlay{
+            position: absolute;
+            width: 220px;
+            height: 310px;
+            background: linear-gradient(105deg,
+            transparent 40%,
+            rgba(255,219,112,0.8) 45%,
+            rgba(132,50,255,0.6) 50%,
+            transparent 54%);
+            filter: brightness(1.2) opacity(0.8);
+            mix-blend-mode:color-dodge;
+            background-size: 150% 150%;
+            background-position: 100%;
+            transition: all 0.1s;
+
+        }
+        .card1{
+            width: 220px; height: 310px;
+            background-image: url(./img/plant1.png);
+            background-size: cover;
+        }
+        .card2{
+            width: 220px; height: 310px;
+            background-image: url(./img/plant2.png);
+            background-size: cover;
+        }
+        .card3{
+            width: 220px; height: 310px;
+            background-image: url(./img/plant3.png);
+            background-size: cover;
+        }
+        #plants{
+            width: 100px;
+            height: auto;
+            bottom: 0;
+            z-index: 0;
+        }
+    </style>
+</body>
+</html>
